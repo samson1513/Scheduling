@@ -1,0 +1,125 @@
+rootProject.ext {
+
+    ASVersion = '27.0.2'
+    GSVersion = '11.8.0'
+    retrofitVersion = '2.3.0'
+    loganVersion = '1.3.7'
+    loganConverterVersion = '1.4.1'
+    daggerVersion = '2.11'
+    rxJavaVersion = '2.0.1'
+    rxAndroidVersion = '2.1.5'
+    rxPermissiomVersion = '0.9.4@aar'
+    rxPaparazzoVersion = '0.6.0-2.x'
+    butterknifeVersion = '8.6.0'
+    adapterVersion = '2.9.34'
+    glideVersion = '4.6.1'
+    caligraphyVersion = '2.3.0'
+    pinEntryVersion = '1.3.1'
+    roomVersion = '1.0.0'
+    stickyHeadersVersion = '0.4.3@aar'
+
+    stethoVersion = '1.5.0'
+    crashlyticsVersion = '2.9.0@aar'
+}
+
+def dependencyGroup(Closure closure) {
+    closure.delegate = dependencies
+    return closure
+}
+
+def test = dependencyGroup {
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+}
+
+def ui = dependencyGroup {
+    implementation "com.android.support:design:$rootProject.ASVersion"
+    implementation "com.android.support:recyclerview-v7:$rootProject.ASVersion"
+    implementation "com.android.support:cardview-v7:$rootProject.ASVersion"
+    implementation "com.android.support:customtabs:$rootProject.ASVersion"
+    implementation 'com.android.support:multidex:1.0.1'
+
+    implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:$rootProject.adapterVersion"
+    implementation("com.github.bumptech.glide:glide:$rootProject.glideVersion") {
+        exclude group: ' com.android.support'
+    }
+    annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
+    implementation "uk.co.chrisjenx:calligraphy:$rootProject.caligraphyVersion"
+    implementation "com.alimuzaffar.lib:pinentryedittext:$rootProject.pinEntryVersion"
+    implementation "com.timehop.stickyheadersrecyclerview:library:$rootProject.stickyHeadersVersion"
+}
+
+def network = dependencyGroup {
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    implementation("com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofitVersion") {
+        exclude group: 'com.squareup.okio', module: 'okio'
+        exclude group: 'com.squareup.retrofit2', module: 'retrofit'
+        exclude group: 'io.reactivex.rxjava2', module: 'rxjava'
+        exclude group: 'com.squareup.okhttp3', module: 'okhttp'
+    }
+    implementation "com.github.aurae.retrofit2:converter-logansquare:$rootProject.loganConverterVersion"
+    implementation "com.bluelinelabs:logansquare:$rootProject.loganVersion"
+    annotationProcessor "com.bluelinelabs:logansquare-compiler:$rootProject.loganVersion"
+}
+
+def googleService = dependencyGroup {
+    implementation "com.google.android.gms:play-services-auth:$rootProject.GSVersion"
+    implementation "com.google.android.gms:play-services-location:$rootProject.GSVersion"
+}
+
+def rx = dependencyGroup {
+    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxJavaVersion"
+    implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxAndroidVersion"
+    implementation "com.tbruyelle.rxpermissions2:rxpermissions:$rootProject.rxPermissiomVersion"
+    implementation("com.github.miguelbcr:RxPaparazzo:$rootProject.rxPaparazzoVersion") {
+        exclude group: 'com.android.support'
+    }
+}
+
+def db = dependencyGroup {
+    implementation "android.arch.persistence.room:runtime:$rootProject.roomVersion"
+    implementation "android.arch.persistence.room:rxjava2:$rootProject.roomVersion"
+    annotationProcessor "android.arch.persistence.room:compiler:$rootProject.roomVersion"
+}
+
+def di = dependencyGroup {
+    implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$rootProject.daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$rootProject.daggerVersion"
+    implementation("com.jakewharton:butterknife:$rootProject.butterknifeVersion") {
+        exclude group: 'com.android.support'
+    }
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterknifeVersion"
+}
+
+def debug = dependencyGroup {
+    debugImplementation "com.facebook.stetho:stetho-okhttp3:$rootProject.stethoVersion"
+}
+
+def qa = dependencyGroup {
+    qaImplementation("com.crashlytics.sdk.android:crashlytics:$rootProject.crashlyticsVersion") {
+        transitive = true
+    }
+    qaImplementation "com.facebook.stetho:stetho-okhttp3:$rootProject.stethoVersion"
+}
+
+def release = dependencyGroup {
+    releaseImplementation("com.crashlytics.sdk.android:crashlytics:$rootProject.crashlyticsVersion") {
+        transitive = true
+    }
+}
+
+dependencies {
+    test()
+    ui()
+    googleService()
+    network()
+    rx()
+    di()
+    db()
+    debug()
+    qa()
+    release()
+}

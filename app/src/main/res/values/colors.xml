@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="color_primary">#3F51B5</color>
+    <color name="color_primary_dark">#303F9F</color>
+    <color name="color_accent">#ffcc01</color>
+
+    <color name="ripple_accent">#FF4081</color>
+
+    <color name="divider">#d8d8d8</color>
+    <color name="yellow">#ffcc01</color>
+    <color name="green">#18dca8</color>
+    <color name="orange">#ff6f00</color>
+
+    <!--Background colors-->
+    <color name="bg_white">#ffffff</color>
+    <color name="bg_black">#000000</color>
+    <color name="bg_gray_dark">#545454</color>
+    <color name="bg_gray_light">#f5f5f5</color>
+    <color name="bg_edit_phone">#f5f5f5</color>
+    <color name="bg_sign_in">#fffffb</color>
+    <color name="bg_divider">#d8d8d8</color>
+    <color name="bg_agree">#323232</color>
+
+
+    <!--Text colors-->
+    <color name="text_white">#ffffff</color>
+    <color name="hint_color">#80545454</color>
+    <color name="text_disabled">#d8d8d8</color>
+    <color name="text_yellow">#ffcc01</color>
+    <color name="text_black">#545454</color>
+    <color name="text_gray_2">#b1b1b1</color>
+    <color name="text_gray">#d8d8d8</color>
+    <color name="text_gray_dark">#767676</color>
+    <color name="text_gray_light">#f5f5f5</color>
+
 </resources>

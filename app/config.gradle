@@ -1,0 +1,59 @@
+rootProject.ext {
+
+    compileSdkVersion = 27
+    applicationId = "com.am.scheduling"
+    minSdkVersion = 21
+    targetSdkVersion = 27
+    versionCode = 1
+    versionName = "0.1.0"
+}
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    defaultConfig {
+        applicationId rootProject.applicationId
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode rootProject.versionCode
+        versionName rootProject.versionName
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    signingConfigs {
+        release {
+        }
+
+        debug {
+            storeFile file('keystore/debug.jks')
+            keyAlias 'debugKey'
+            storePassword 'android'
+            keyPassword 'android'
+        }
+    }
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
+        qa {
+            versionNameSuffix "-TEST"
+            debuggable true
+            signingConfig signingConfigs.debug
+        }
+        release {
+            signingConfig signingConfigs.release
+            versionNameSuffix "-PROD"
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "Scheduling-${variant.buildType.name}_v${variant.versionName}.apk"
+        }
+    }
+}

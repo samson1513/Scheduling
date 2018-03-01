@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/padding_default"
+    android:clipToPadding="false"
+    android:background="@color/bg_white">
+
+
+    <TextView
+        android:id="@+id/tv_hob_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_default"
+        android:layout_marginStart="@dimen/margin_default"
+        android:layout_marginEnd="@dimen/margin_default"
+        android:layout_centerInParent="true"
+        android:gravity="center"/>
+
+    <ImageView
+        android:id="@+id/iv_hob_image"
+        android:layout_width="@dimen/image_size_big"
+        android:layout_height="@dimen/image_size_big"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/tv_hob_message"/>
+
+    <Button
+        android:id="@+id/btn_hob_action"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_default"
+        android:layout_marginEnd="@dimen/margin_default"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>
