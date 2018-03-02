@@ -1,12 +1,9 @@
 package com.am.scheduling.domain.repositories.group;
 
 import com.am.scheduling.data.database.dao.GroupDao;
-import com.am.scheduling.data.database.dao.RoomDao;
 import com.am.scheduling.data.database.models.Group;
-import com.am.scheduling.data.database.models.Room;
 import com.am.scheduling.domain.repositories.group.mapper.GroupMapper;
 import com.am.scheduling.presentation.screens.main.managment.group.adapter.GroupDH;
-import com.am.scheduling.presentation.screens.main.managment.room.adapter.RoomDH;
 
 import java.util.List;
 
@@ -34,7 +31,7 @@ public class GroupRepoImpl implements GroupRepo {
 
     @Override
     public Single<List<GroupDH>> getGroups() {
-        return mGroupDao.getRooms()
+        return mGroupDao.get()
                 .flatMapObservable(Observable::fromIterable)
                 .map(mGroupMapper::convert)
                 .toList();

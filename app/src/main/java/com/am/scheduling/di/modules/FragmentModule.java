@@ -11,6 +11,10 @@ import com.am.scheduling.presentation.screens.main.managment.room.RoomsFragment;
 import com.am.scheduling.presentation.screens.main.managment.room.RoomsModule;
 import com.am.scheduling.presentation.screens.main.managment.room.create.CreateRoomFragment;
 import com.am.scheduling.presentation.screens.main.managment.room.create.CreateRoomModule;
+import com.am.scheduling.presentation.screens.main.managment.teacher.TeachersFragment;
+import com.am.scheduling.presentation.screens.main.managment.teacher.TeachersModule;
+import com.am.scheduling.presentation.screens.main.managment.teacher.create.CreateTeacherFragment;
+import com.am.scheduling.presentation.screens.main.managment.teacher.create.CreateTeacherModule;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -37,5 +41,11 @@ public abstract class FragmentModule {
 
     @ContributesAndroidInjector(modules = {CreateGroupModule.class})
     abstract CreateGroupFragment createGroupFragment();
+
+    @ContributesAndroidInjector(modules = {TeachersModule.class})
+    abstract TeachersFragment teachersFragment();
+
+    @ContributesAndroidInjector(modules = {CreateTeacherModule.class})
+    abstract CreateTeacherFragment createTeacherFragment();
 
 }

@@ -8,18 +8,34 @@
     android:descendantFocusability="beforeDescendants">
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/til_name_fct"
+        android:id="@+id/til_first_name_fct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:errorEnabled="true">
 
         <EditText
-            android:id="@+id/edit_name_fct"
+            android:id="@+id/edit_first_name_fct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:imeOptions="actionNext"
+            android:nextFocusForward="@id/edit_last_name_fct"
+            android:hint="@string/hint_first_name"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/til_last_name_fct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:errorEnabled="true">
+
+        <EditText
+            android:id="@+id/edit_last_name_fct"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
             android:imeOptions="actionDone"
-            android:hint="@string/hint_name"/>
+            android:hint="@string/hint_last_name"/>
     </android.support.design.widget.TextInputLayout>
 
 </LinearLayout>

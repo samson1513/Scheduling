@@ -93,6 +93,8 @@
     <string name="text_settings_feedback">Give Us Feedback</string>
     <string name="text_settings_logout">Log Out</string>
     <string name="hint_name">Name</string>
+    <string name="hint_first_name">First name</string>
+    <string name="hint_last_name">Last name</string>
     <string name="hint_capacity">Capacity</string>
     <string name="hint_size">Count members</string>
 

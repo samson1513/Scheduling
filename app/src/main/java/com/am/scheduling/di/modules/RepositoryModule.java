@@ -5,6 +5,8 @@ import com.am.scheduling.domain.repositories.group.GroupRepo;
 import com.am.scheduling.domain.repositories.group.GroupRepoImpl;
 import com.am.scheduling.domain.repositories.room.RoomRepo;
 import com.am.scheduling.domain.repositories.room.RoomRepoImpl;
+import com.am.scheduling.domain.repositories.teacher.TeacherRepo;
+import com.am.scheduling.domain.repositories.teacher.TeacherRepoImpl;
 
 import dagger.Binds;
 import dagger.Module;
@@ -22,4 +24,7 @@ public abstract class RepositoryModule {
 
     @Binds
     abstract GroupRepo groupRepo(GroupRepoImpl groupRepoImpl);
+
+    @Binds
+    abstract TeacherRepo teacherRepo(TeacherRepoImpl teacherRepoImpl);
 }

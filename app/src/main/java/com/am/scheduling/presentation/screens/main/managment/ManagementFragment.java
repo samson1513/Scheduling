@@ -5,23 +5,20 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.am.scheduling.R;
 import com.am.scheduling.presentation.core.base.BaseFragment;
 import com.am.scheduling.presentation.core.tab.TabAdapter;
 import com.am.scheduling.presentation.screens.main.managment.group.GroupsFragment;
 import com.am.scheduling.presentation.screens.main.managment.room.RoomsFragment;
+import com.am.scheduling.presentation.screens.main.managment.teacher.TeachersFragment;
 import com.am.scheduling.presentation.utils.Consts;
 import com.am.scheduling.presentation.utils.ui.RxView;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  * Created by Alex Michenko
@@ -69,6 +66,7 @@ public class ManagementFragment extends BaseFragment<ManagementContract.Presente
         mTabAdapter = new TabAdapter(getChildFragmentManager());
         mTabAdapter.addFragment(new RoomsFragment(), "Rooms");
         mTabAdapter.addFragment(new GroupsFragment(), "Groups");
+        mTabAdapter.addFragment(new TeachersFragment(), "Teachers");
     }
 
     @Override

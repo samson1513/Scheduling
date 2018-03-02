@@ -6,7 +6,7 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
-import com.am.scheduling.data.database.models.Group;
+import com.am.scheduling.data.database.models.Teacher;
 
 import java.util.List;
 
@@ -18,20 +18,17 @@ import io.reactivex.Single;
  */
 
 @Dao
-public interface GroupDao {
+public interface TeacherDao {
 
     @Insert
-    List<Long> insert(Group... groups);
+    List<Long> insert(Teacher... groups);
 
     @Delete
-    int delete(Group group);
+    int delete(Teacher group);
 
     @Update
-    int update(Group group);
+    int update(Teacher group);
 
-    @Query("SELECT * FROM groups")
-    Single<List<Group>> get();
-
-    @Query("SELECT * FROM groups WHERE id LIKE :id")
-    Single<Group> getRoomById(String id);
+    @Query("SELECT * FROM teacher")
+    Single<List<Teacher>> get();
 }
