@@ -6,7 +6,9 @@ import android.content.Context;
 import com.am.scheduling.data.database.AppDatabase;
 import com.am.scheduling.data.database.dao.GroupDao;
 import com.am.scheduling.data.database.dao.RoomDao;
+import com.am.scheduling.data.database.dao.SubjectDao;
 import com.am.scheduling.data.database.dao.TeacherDao;
+import com.am.scheduling.data.database.dao.TimeslotDao;
 
 import javax.inject.Singleton;
 
@@ -43,6 +45,16 @@ public class DatabaseModule {
     @Provides
     public TeacherDao teacherDao(AppDatabase database) {
         return database.teacherDao();
+    }
+
+    @Provides
+    public SubjectDao subjectDao(AppDatabase database) {
+        return database.subjectDao();
+    }
+
+    @Provides
+    public TimeslotDao timeslotDao(AppDatabase database) {
+        return database.timeslotDao();
     }
 
 }

@@ -12,6 +12,8 @@ import com.am.scheduling.presentation.core.base.BaseFragment;
 import com.am.scheduling.presentation.core.tab.TabAdapter;
 import com.am.scheduling.presentation.screens.main.managment.group.GroupsFragment;
 import com.am.scheduling.presentation.screens.main.managment.room.RoomsFragment;
+import com.am.scheduling.presentation.screens.main.managment.schedule.SchedulesFragment;
+import com.am.scheduling.presentation.screens.main.managment.subject.SubjectsFragment;
 import com.am.scheduling.presentation.screens.main.managment.teacher.TeachersFragment;
 import com.am.scheduling.presentation.utils.Consts;
 import com.am.scheduling.presentation.utils.ui.RxView;
@@ -67,6 +69,8 @@ public class ManagementFragment extends BaseFragment<ManagementContract.Presente
         mTabAdapter.addFragment(new RoomsFragment(), "Rooms");
         mTabAdapter.addFragment(new GroupsFragment(), "Groups");
         mTabAdapter.addFragment(new TeachersFragment(), "Teachers");
+        mTabAdapter.addFragment(new SubjectsFragment(), "Subjects");
+        mTabAdapter.addFragment(new SchedulesFragment(), "Schedules");
     }
 
     @Override

@@ -15,32 +15,12 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/et_fcs_name"
+                android:id="@+id/edit_fcs_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Name"
-                android:inputType="text|textAutoCorrect" />
+                android:inputType="text|textAutoCorrect|textCapSentences" />
         </android.support.design.widget.TextInputLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/padding_default"
-            android:text="Properties"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:background="#e0e055"/>
-
-            <android.support.v7.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
 
     </LinearLayout>
 
