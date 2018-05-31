@@ -1,7 +1,6 @@
 package com.am.scheduling.domain.repositories.subject;
 
 import com.am.scheduling.data.database.models.Subject;
-import com.am.scheduling.presentation.screens.main.managment.subject.adapter.SubjectDH;
 
 import java.util.List;
 
@@ -15,7 +14,7 @@ import io.reactivex.Single;
 
 public interface SubjectRepo {
 
-    Single<List<SubjectDH>> get();
+    Single<List<Subject>> get();
 
     Completable save(Subject model);
 }

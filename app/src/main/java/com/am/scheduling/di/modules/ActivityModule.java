@@ -1,10 +1,10 @@
 package com.am.scheduling.di.modules;
 
 
-import com.am.scheduling.presentation.screens.main.MainActivity;
-import com.am.scheduling.presentation.screens.main.MainModule;
+import com.am.scheduling.presentation.screens.home.HomeActivity;
+import com.am.scheduling.presentation.screens.home.HomeContract;
 import com.am.scheduling.presentation.screens.splash.SplashActivity;
-import com.am.scheduling.presentation.screens.splash.SplashModule;
+import com.am.scheduling.presentation.screens.splash.SplashContract;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -15,14 +15,13 @@ import dagger.android.ContributesAndroidInjector;
  */
 
 @Module(includes = {
-        NavigationModule.class,
         FragmentModule.class
 })
 public abstract class ActivityModule {
 
-    @ContributesAndroidInjector(modules = {SplashModule.class})
-    abstract SplashActivity splashActivity();
+    @ContributesAndroidInjector(modules = {HomeContract.HomeModule.class})
+    abstract HomeActivity homeActivity();
 
-    @ContributesAndroidInjector(modules = {MainModule.class})
-    abstract MainActivity mainActivity();
+    @ContributesAndroidInjector(modules = {SplashContract.SplashModule.class})
+    abstract SplashActivity splashActivity();
 }

@@ -1,6 +1,7 @@
 package com.am.scheduling.data.database.models;
 
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 /**
@@ -8,25 +9,17 @@ import android.arch.persistence.room.PrimaryKey;
  * on 03.03.2018.
  */
 
-@Entity
+@Entity(tableName = "subjects")
 public class Subject {
     @PrimaryKey(autoGenerate = true)
-    private int id;
-    private String name;
+    public int id;
+    public String name;
 
-    public int getId() {
-        return id;
+    public Subject() {
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    @Ignore
+    public Subject(String name) {
         this.name = name;
     }
 }

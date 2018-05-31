@@ -3,14 +3,13 @@ package com.am.scheduling.data.database.dao;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
 import com.am.scheduling.data.database.models.Teacher;
 
 import java.util.List;
-
-import io.reactivex.Single;
 
 /**
  * Created by Alex Michenko
@@ -20,15 +19,18 @@ import io.reactivex.Single;
 @Dao
 public interface TeacherDao {
 
-    @Insert
-    List<Long> insert(Teacher... groups);
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insert(Teacher... entity);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insert(List<Teacher> entity);
 
     @Delete
-    int delete(Teacher group);
+    void delete(Teacher entity);
 
     @Update
-    int update(Teacher group);
+    void update(Teacher entity);
 
-    @Query("SELECT * FROM teacher")
-    Single<List<Teacher>> get();
+    @Query("SELECT * FROM teachers")
+    List<Teacher> get();
 }

@@ -1,8 +1,8 @@
 package com.am.scheduling.domain.usecases.timeslot;
 
-import com.am.scheduling.domain.base.single.SingleAsyncUseCase;
+import com.am.scheduling.data.database.models.Timeslot;
+import com.am.scheduling.domain.base.no_input.NoInputSingleCase;
 import com.am.scheduling.domain.repositories.timeslot.TimeslotRepo;
-import com.am.scheduling.presentation.screens.main.managment.schedule.adapter.ScheduleDH;
 
 import java.util.List;
 
@@ -15,17 +15,17 @@ import io.reactivex.Single;
  * on 28.02.2018.
  */
 
-public class TimeslotListCase extends SingleAsyncUseCase<List<ScheduleDH>> {
+public class TimeslotListCase extends NoInputSingleCase<List<Timeslot>> {
 
     @Inject
-    TimeslotRepo mTimeslotRepo;
+    TimeslotRepo repo;
 
     @Inject
     public TimeslotListCase() {
     }
 
     @Override
-    protected Single<List<ScheduleDH>> buildTask() {
-        return mTimeslotRepo.get();
+    protected Single<List<Timeslot>> buildTask() {
+        return repo.get();
     }
 }

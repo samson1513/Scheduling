@@ -2,6 +2,7 @@ package com.am.scheduling.data.database.models;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 /**
@@ -9,41 +10,19 @@ import android.arch.persistence.room.PrimaryKey;
  * on 02.03.2018.
  */
 
-@Entity
+@Entity(tableName = "teachers")
 public class Teacher {
 
     @PrimaryKey(autoGenerate = true)
-    private int id;
-    @ColumnInfo(name = "first_name")
-    private String firstName;
-    @ColumnInfo(name = "last_name")
-    private String lastName;
+    public int id;
+    @ColumnInfo(name = "full_name")
+    public String fullName;
 
-    public int getId() {
-        return id;
+    public Teacher() {
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getFullName() {
-        return String.format("%s %s", firstName, lastName);
+    @Ignore
+    public Teacher(String fullName) {
+        this.fullName = fullName;
     }
 }

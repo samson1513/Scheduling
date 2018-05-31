@@ -3,14 +3,13 @@ package com.am.scheduling.data.database.dao;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
 import com.am.scheduling.data.database.models.Timeslot;
 
 import java.util.List;
-
-import io.reactivex.Single;
 
 /**
  * Created by Alex Michenko
@@ -20,15 +19,18 @@ import io.reactivex.Single;
 @Dao
 public interface TimeslotDao {
 
-    @Insert
-    List<Long> insert(Timeslot... timeslots);
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insert(Timeslot... entity);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insert(List<Timeslot> entity);
 
     @Delete
-    int delete(Timeslot timeslot);
+    void delete(Timeslot entity);
 
     @Update
-    int update(Timeslot timeslot);
+    void update(Timeslot entity);
 
-    @Query("SELECT * FROM timeslot")
-    Single<List<Timeslot>> get();
+    @Query("SELECT * FROM timeslots")
+    List<Timeslot> get();
 }

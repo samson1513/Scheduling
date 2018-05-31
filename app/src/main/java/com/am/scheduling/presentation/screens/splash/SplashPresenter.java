@@ -1,31 +1,24 @@
 package com.am.scheduling.presentation.screens.splash;
 
-
-import com.am.scheduling.presentation.core.base.BasePresenterImpl;
-import com.am.scheduling.presentation.utils.authentication.AuthHelper;
+import com.am.scheduling.presentation.abc.core.base.BasePresenterImpl;
 
 import java.util.concurrent.TimeUnit;
-
-import javax.inject.Inject;
 
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-/**
- * Created by Alex Michenko
- * on 08.02.2018.
- */
+public class SplashPresenter extends BasePresenterImpl<SplashContract.View> implements SplashContract.Presenter {
 
-public class SplashPresenter extends BasePresenterImpl<SplashContract.View>
-        implements SplashContract.Presenter {
+    private SplashContract.Model model;
 
-    @Inject
-    public SplashPresenter() {
+    public SplashPresenter(SplashContract.View view, SplashContract.Model model) {
+        super(view);
+        this.model = model;
     }
 
     @Override
-    public void onUiReady() {
+    public void subscribe() {
         addDisposable(Single.timer(2, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

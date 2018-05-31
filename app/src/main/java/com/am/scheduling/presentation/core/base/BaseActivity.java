@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
+import com.am.scheduling.presentation.abc.core.base.ToolbarManager;
 import com.am.scheduling.presentation.core.base.toolbar.ToolbarAdapter;
 import com.am.scheduling.presentation.core.content.navigation.Navigator;
 
@@ -77,7 +78,6 @@ public abstract class BaseActivity<P extends BasePresenter> extends DaggerAppCom
 
     protected void setupManagers() {
         mUnbinder = ButterKnife.bind(this);
-        getToolbarManager().bind(this, getToolbarAdapter());
     }
 
     public ToolbarManager getToolbarManager() {

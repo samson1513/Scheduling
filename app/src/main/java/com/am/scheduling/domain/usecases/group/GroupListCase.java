@@ -1,10 +1,8 @@
 package com.am.scheduling.domain.usecases.group;
 
-import com.am.scheduling.domain.base.single.SingleAsyncUseCase;
+import com.am.scheduling.data.database.models.Group;
+import com.am.scheduling.domain.base.no_input.NoInputSingleCase;
 import com.am.scheduling.domain.repositories.group.GroupRepo;
-import com.am.scheduling.domain.repositories.room.RoomRepo;
-import com.am.scheduling.presentation.screens.main.managment.group.adapter.GroupDH;
-import com.am.scheduling.presentation.screens.main.managment.room.adapter.RoomDH;
 
 import java.util.List;
 
@@ -17,7 +15,7 @@ import io.reactivex.Single;
  * on 28.02.2018.
  */
 
-public class GroupListCase extends SingleAsyncUseCase<List<GroupDH>> {
+public class GroupListCase extends NoInputSingleCase<List<Group>> {
 
     @Inject
     GroupRepo mGroupRepo;
@@ -27,7 +25,7 @@ public class GroupListCase extends SingleAsyncUseCase<List<GroupDH>> {
     }
 
     @Override
-    protected Single<List<GroupDH>> buildTask() {
+    protected Single<List<Group>> buildTask() {
         return mGroupRepo.getGroups();
     }
 }

@@ -1,8 +1,8 @@
 package com.am.scheduling.domain.usecases.room;
 
-import com.am.scheduling.domain.base.single.SingleAsyncUseCase;
+import com.am.scheduling.data.database.models.Room;
+import com.am.scheduling.domain.base.no_input.NoInputSingleCase;
 import com.am.scheduling.domain.repositories.room.RoomRepo;
-import com.am.scheduling.presentation.screens.main.managment.room.adapter.RoomDH;
 
 import java.util.List;
 
@@ -15,17 +15,17 @@ import io.reactivex.Single;
  * on 28.02.2018.
  */
 
-public class RoomListCase extends SingleAsyncUseCase<List<RoomDH>> {
+public class RoomListCase extends NoInputSingleCase<List<Room>> {
 
     @Inject
-    RoomRepo mRoomRepo;
+    RoomRepo repo;
 
     @Inject
     public RoomListCase() {
     }
 
     @Override
-    protected Single<List<RoomDH>> buildTask() {
-        return mRoomRepo.getRooms();
+    protected Single<List<Room>> buildTask() {
+        return repo.getRooms();
     }
 }

@@ -1,7 +1,7 @@
 package com.am.scheduling.domain.usecases.room;
 
 import com.am.scheduling.data.database.models.Room;
-import com.am.scheduling.domain.base.completable.CompletableAsyncUseCase;
+import com.am.scheduling.domain.base.input.CompletableCase;
 import com.am.scheduling.domain.repositories.room.RoomRepo;
 
 import javax.inject.Inject;
@@ -13,25 +13,17 @@ import io.reactivex.Completable;
  * on 28.02.2018.
  */
 
-public class CreateRoomCase extends CompletableAsyncUseCase {
+public class CreateRoomCase extends CompletableCase<Room> {
 
     @Inject
-    RoomRepo mRoomRepo;
-    private Room mRoom;
+    RoomRepo repo;
 
     @Inject
     public CreateRoomCase() {
     }
 
-    public CreateRoomCase with(String name, int capacity) {
-        mRoom = new Room();
-        mRoom.setName(name);
-        mRoom.setCapacity(capacity);
-        return this;
-    }
-
     @Override
-    protected Completable buildTask() {
-        return mRoomRepo.save(mRoom);
+    protected Completable buildTask(Room data) {
+        return repo.save(data);
     }
 }

@@ -1,7 +1,6 @@
 package com.am.scheduling.domain.repositories.timeslot;
 
 import com.am.scheduling.data.database.models.Timeslot;
-import com.am.scheduling.presentation.screens.main.managment.schedule.adapter.ScheduleDH;
 
 import java.util.List;
 
@@ -15,7 +14,7 @@ import io.reactivex.Single;
 
 public interface TimeslotRepo {
 
-    Single<List<ScheduleDH>> get();
+    Single<List<Timeslot>> get();
 
-    Completable save(Timeslot... model);
+    Completable save(List<Timeslot> model);
 }

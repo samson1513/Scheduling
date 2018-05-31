@@ -1,10 +1,8 @@
 package com.am.scheduling.domain.usecases.group;
 
 import com.am.scheduling.data.database.models.Group;
-import com.am.scheduling.data.database.models.Room;
-import com.am.scheduling.domain.base.completable.CompletableAsyncUseCase;
+import com.am.scheduling.domain.base.input.CompletableCase;
 import com.am.scheduling.domain.repositories.group.GroupRepo;
-import com.am.scheduling.domain.repositories.room.RoomRepo;
 
 import javax.inject.Inject;
 
@@ -15,25 +13,17 @@ import io.reactivex.Completable;
  * on 28.02.2018.
  */
 
-public class CreateGroupCase extends CompletableAsyncUseCase {
+public class CreateGroupCase extends CompletableCase<Group> {
 
     @Inject
-    GroupRepo mGroupRepo;
-    private Group mGroup;
+    GroupRepo repo;
 
     @Inject
     public CreateGroupCase() {
     }
 
-    public CreateGroupCase with(String name, int size) {
-        mGroup = new Group();
-        mGroup.setName(name);
-        mGroup.setSize(size);
-        return this;
-    }
-
     @Override
-    protected Completable buildTask() {
-        return mGroupRepo.save(mGroup);
+    protected Completable buildTask(Group data) {
+        return repo.save(data);
     }
 }

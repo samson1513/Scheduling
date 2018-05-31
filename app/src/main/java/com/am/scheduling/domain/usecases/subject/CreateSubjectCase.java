@@ -1,7 +1,7 @@
 package com.am.scheduling.domain.usecases.subject;
 
 import com.am.scheduling.data.database.models.Subject;
-import com.am.scheduling.domain.base.completable.CompletableAsyncUseCase;
+import com.am.scheduling.domain.base.input.CompletableCase;
 import com.am.scheduling.domain.repositories.subject.SubjectRepo;
 
 import javax.inject.Inject;
@@ -13,24 +13,17 @@ import io.reactivex.Completable;
  * on 28.02.2018.
  */
 
-public class CreateSubjectCase extends CompletableAsyncUseCase {
+public class CreateSubjectCase extends CompletableCase<Subject> {
 
     @Inject
-    SubjectRepo mSubjectRepo;
-    private Subject mSubject;
+    SubjectRepo repo;
 
     @Inject
     public CreateSubjectCase() {
     }
 
-    public CreateSubjectCase with(String name) {
-        mSubject = new Subject();
-        mSubject.setName(name);
-        return this;
-    }
-
     @Override
-    protected Completable buildTask() {
-        return mSubjectRepo.save(mSubject);
+    protected Completable buildTask(Subject data) {
+        return repo.save(data);
     }
 }

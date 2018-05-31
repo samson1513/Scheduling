@@ -1,7 +1,6 @@
 package com.am.scheduling.domain.repositories.room;
 
 import com.am.scheduling.data.database.models.Room;
-import com.am.scheduling.presentation.screens.main.managment.room.adapter.RoomDH;
 
 import java.util.List;
 
@@ -15,7 +14,7 @@ import io.reactivex.Single;
 
 public interface RoomRepo {
 
-    Single<List<RoomDH>> getRooms();
+    Single<List<Room>> getRooms();
 
     Completable save(Room room);
 }

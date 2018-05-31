@@ -1,8 +1,8 @@
 package com.am.scheduling.domain.usecases.subject;
 
-import com.am.scheduling.domain.base.single.SingleAsyncUseCase;
+import com.am.scheduling.data.database.models.Subject;
+import com.am.scheduling.domain.base.no_input.NoInputSingleCase;
 import com.am.scheduling.domain.repositories.subject.SubjectRepo;
-import com.am.scheduling.presentation.screens.main.managment.subject.adapter.SubjectDH;
 
 import java.util.List;
 
@@ -15,17 +15,17 @@ import io.reactivex.Single;
  * on 28.02.2018.
  */
 
-public class SubjectListCase extends SingleAsyncUseCase<List<SubjectDH>> {
+public class SubjectListCase extends NoInputSingleCase<List<Subject>> {
 
     @Inject
-    SubjectRepo mSubjectRepo;
+    SubjectRepo repo;
 
     @Inject
     public SubjectListCase() {
     }
 
     @Override
-    protected Single<List<SubjectDH>> buildTask() {
-        return mSubjectRepo.get();
+    protected Single<List<Subject>> buildTask() {
+        return repo.get();
     }
 }

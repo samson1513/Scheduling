@@ -2,15 +2,12 @@ package com.am.scheduling.domain.repositories.room;
 
 import com.am.scheduling.data.database.dao.RoomDao;
 import com.am.scheduling.data.database.models.Room;
-import com.am.scheduling.domain.repositories.room.mapper.RoomMapper;
-import com.am.scheduling.presentation.screens.main.managment.room.adapter.RoomDH;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
 import io.reactivex.Completable;
-import io.reactivex.Observable;
 import io.reactivex.Single;
 
 /**
@@ -20,25 +17,20 @@ import io.reactivex.Single;
 
 public class RoomRepoImpl implements RoomRepo {
 
-    private RoomDao mRoomDao;
-    private RoomMapper mRoomMapper;
+    @Inject
+    RoomDao mRoomDao;
 
     @Inject
-    public RoomRepoImpl(RoomDao roomDao, RoomMapper roomMapper) {
-        mRoomDao = roomDao;
-        mRoomMapper = roomMapper;
+    public RoomRepoImpl() {
     }
 
     @Override
-    public Single<List<RoomDH>> getRooms() {
-        return mRoomDao.getRooms()
-                .flatMapObservable(Observable::fromIterable)
-                .map(mRoomMapper::convert)
-                .toList();
+    public Single<List<Room>> getRooms() {
+        return Single.just(mRoomDao.get());
     }
 
     @Override
     public Completable save(Room room) {
-        return Completable.fromCallable(() -> mRoomDao.insert(room));
+        return Completable.fromAction(() -> mRoomDao.insert(room));
     }
 }

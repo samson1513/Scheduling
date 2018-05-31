@@ -2,7 +2,6 @@ package com.am.scheduling.presentation.core.base;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.CallSuper;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 
-
+import com.am.scheduling.presentation.abc.core.base.ToolbarManager;
 import com.am.scheduling.presentation.core.content.StackActivity;
 import com.am.scheduling.presentation.core.content.navigation.Navigator;
 
@@ -42,7 +41,6 @@ public abstract class BaseFragment<P extends BasePresenter> extends DaggerFragme
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        setRetainInstance(true);
         inputMethodManager = (InputMethodManager) getStackActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         parseArguments(getArguments());
     }

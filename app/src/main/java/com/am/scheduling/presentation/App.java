@@ -5,7 +5,6 @@ import android.support.multidex.MultiDex;
 
 import com.am.scheduling.Config;
 import com.am.scheduling.di.components.DaggerAppComponent;
-import com.miguelbcr.ui.rx_paparazzo2.RxPaparazzo;
 
 import dagger.android.AndroidInjector;
 import dagger.android.support.DaggerApplication;
@@ -29,8 +28,6 @@ public class App extends DaggerApplication {
         super.onCreate();
 
         Config.init(this);
-
-        RxPaparazzo.register(this);
     }
 
     @Override

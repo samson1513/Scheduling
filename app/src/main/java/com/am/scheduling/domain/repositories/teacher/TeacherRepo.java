@@ -1,7 +1,6 @@
 package com.am.scheduling.domain.repositories.teacher;
 
 import com.am.scheduling.data.database.models.Teacher;
-import com.am.scheduling.presentation.screens.main.managment.teacher.adapter.TeacherDH;
 
 import java.util.List;
 
@@ -15,7 +14,7 @@ import io.reactivex.Single;
 
 public interface TeacherRepo {
 
-    Single<List<TeacherDH>> get();
+    Single<List<Teacher>> get();
 
     Completable save(Teacher model);
 }

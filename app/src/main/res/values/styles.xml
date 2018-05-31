@@ -1,11 +1,4 @@
 <resources>
 
 
-    <style name="SettingsButton" parent="android:Widget.Button">
-        <item name="android:background">?android:attr/selectableItemBackground</item>
-        <item name="android:paddingEnd">@dimen/padding_large</item>
-        <item name="android:paddingStart">@dimen/padding_large</item>
-        <item name="android:gravity">center_vertical</item>
-    </style>
-
 </resources>

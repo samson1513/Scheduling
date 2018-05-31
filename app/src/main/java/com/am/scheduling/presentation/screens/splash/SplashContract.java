@@ -1,24 +1,42 @@
 package com.am.scheduling.presentation.screens.splash;
 
-
-import com.am.scheduling.presentation.core.base.BasePresenter;
-import com.am.scheduling.presentation.core.base.BaseView;
-import com.am.scheduling.presentation.utils.authentication.AuthHelper;
+import com.am.scheduling.presentation.abc.core.base.BasePresenter;
+import com.am.scheduling.presentation.abc.core.base.BaseView;
 
 import javax.inject.Inject;
 
-/**
- * Created by Alex Michenko
- * on 08.02.2018.
- */
+import dagger.Module;
+import dagger.Provides;
 
 public interface SplashContract {
 
-    interface View extends BaseView<Presenter> {
+    interface View extends BaseView {
         void startMainScreen();
     }
 
-    interface Presenter extends BasePresenter<View> {
-        void onUiReady();
+    interface Presenter extends BasePresenter {
+
     }
+
+    class Model {
+
+        @Inject
+        public Model() {
+        }
+    }
+
+    @Module
+    class SplashModule {
+
+        @Provides
+        protected View provideView(SplashActivity activity) {
+            return activity;
+        }
+
+        @Provides
+        protected Presenter providePresenter(View view, Model model) {
+            return new SplashPresenter(view, model);
+        }
+    }
+
 }

@@ -28,6 +28,7 @@ public class DatabaseModule {
         return Room.databaseBuilder(context.getApplicationContext(),
                 AppDatabase.class,
                 "db-scheduling")
+                .allowMainThreadQueries()
                 .fallbackToDestructiveMigration()
                 .build();
     }

@@ -2,101 +2,30 @@
     <string name="app_name" translatable="false">Scheduling</string>
 
     <!--Errors-->
-    <string name="err_no_reports">No reports</string>
-    <string name="err_no_test_history">No test history</string>
     <string name="err_back_to_exit">Click BACK again to exit</string>
-    <string name="err_required">Required</string>
-    <string name="err_invalid">Invalid</string>
-    <string name="err_incorrect">Incorrect</string>
     <string name="err_no_data">No data</string>
-    <string name="err_connection_lost">Internet connection lost</string>
     <string name="err_something_went_wrong">Something went wrong</string>
-    <string name="err_msg_connection_lost">Internet connection lost</string>
-    <string name="err_msg_something_went_wrong">Something went wrong</string>
-    <string name="err_msg_no_geo_permission">Hey! We are unable to show you the others without geolocation.\nPlease turn it on.</string>
-    <string name="err_msg_no_gps">Hey! We are unable to show you the others without geolocation.\nPlease turn it on.</string>
-    <string name="err_msg_code_incorrect">Verification code does not match</string>
-    <string name="err_msg_not_registered_on_incorrect">The number or code is incorrect</string>
-    <string name="err_msg_phone_invalid">Invalid phone number</string>
-    <string name="err_msg_not_registered">Is not registered</string>
-    <string name="err_msg_already_registered">Already registered</string>
-    <string name="err_msg_code_or_number_incorrect">Phone number or code is incorrect</string>
 
     <!--Messages-->
-    <string name="msg_accepted">Accepted</string>
 
     <!--Fields-->
 
     <!--Buttons-->
-    <string name="btn_ok">OK</string>
-    <string name="btn_done">Done</string>
-    <string name="btn_next">Next</string>
-    <string name="btn_prev">Prev</string>
-    <string name="btn_cancel">Cancel</string>
-    <string name="btn_retry">Retry</string>
-    <string name="btn_sign_in">Sign In</string>
-    <string name="btn_allow">Allow</string>
-    <string name="btn_follow">Follow</string>
-    <string name="btn_following">Following</string>
-    <string name="btn_create_account">Create account</string>
-    <string name="btn_send_code">Send code</string>
-    <string name="btn_resend_code">Resend code</string>
-    <string name="btn_confirm">Confirm</string>
-    <string name="btn_delete">Delete</string>
-    <string name="btn_yes">Delete</string>
-    <string name="btn_no">Delete</string>
 
     <!--Titles-->
-    <string name="title_sign_in">Sign In</string>
-    <string name="title_country">Country</string>
-    <string name="title_safety">Safety Policy</string>
-    <string name="title_hazard_reports">Hazard reports</string>
-    <string name="title_achievements">Achievements</string>
-    <string name="title_settings">Settings</string>
-    <string name="title_edit_profile">Edit Profile</string>
-    <string name="title_location">Location</string>
-    <string name="title_notifications">Notifications</string>
 
     <!--Actions-->
-    <string name="action_ok">OK</string>
-    <string name="action_cancel">Cancel</string>
-    <string name="action_done">Done</string>
-    <string name="action_next">Next</string>
-    <string name="action_prev">Prev</string>
     <string name="action_retry">Retry</string>
-    <string name="action_sign_in">Sign In</string>
-    <string name="action_send_code"><u>Send code</u></string>
-    <string name="action_resend_code"><u>Resend code</u></string>
-    <string name="action_confirm">Confirm</string>
-    <string name="action_accept">Accept</string>
-    <string name="action_decline">Decline</string>
-    <string name="action_delete">Delete</string>
-    <string name="action_yes">Yes</string>
-    <string name="action_no">No</string>
 
     <!--Hints-->
-    <string name="hint_phone_number">Phone number</string>
-    <string name="hint_search">Search…</string>
 
     <!--Text-->
-    <string name="text_required">* Required</string>
-    <string name="text_agree">I agree to adhere to this Health and Safety Policy</string>
-    <string name="text_enter_your_phone_number">Enter your phone number</string>
-    <string name="text_enter_your_4_digit_security_code">Enter your 4 digit security code</string>
-    <string name="field_your_rating">Your rating:</string>
-    <string name="field_solo_journal">Solo Journal</string>
-    <string name="text_settings_edit_profile">View and Edit Profile</string>
-    <string name="text_settings_location">Location</string>
-    <string name="text_settings_notification">Notifications</string>
-    <string name="text_settings_about">About</string>
-    <string name="text_settings_privacy">Privacy Policy</string>
-    <string name="text_settings_feedback">Give Us Feedback</string>
-    <string name="text_settings_logout">Log Out</string>
     <string name="hint_name">Name</string>
     <string name="hint_first_name">First name</string>
     <string name="hint_last_name">Last name</string>
     <string name="hint_capacity">Capacity</string>
     <string name="hint_size">Count members</string>
+    <string name="err_msg_no_data">No data</string>
 
     <!--Formatted text-->
 

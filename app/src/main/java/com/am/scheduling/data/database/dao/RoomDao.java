@@ -3,14 +3,13 @@ package com.am.scheduling.data.database.dao;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
 import com.am.scheduling.data.database.models.Room;
 
 import java.util.List;
-
-import io.reactivex.Single;
 
 /**
  * Created by Alex Michenko
@@ -20,18 +19,18 @@ import io.reactivex.Single;
 @Dao
 public interface RoomDao {
 
-    @Insert
-    List<Long> insert(Room... rooms);
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insert(Room... entity);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insert(List<Room> entity);
 
     @Delete
-    int delete(Room room);
+    void delete(Room entity);
 
     @Update
-    int update(Room room);
+    void update(Room entity);
 
-    @Query("SELECT * FROM room")
-    Single<List<Room>> getRooms();
-
-    @Query("SELECT * FROM room WHERE id LIKE :id")
-    Single<Room> getRoomById(String id);
+    @Query("SELECT * FROM rooms")
+    List<Room> get();
 }

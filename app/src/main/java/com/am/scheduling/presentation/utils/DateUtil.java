@@ -20,6 +20,7 @@ public final class DateUtil {
     public static final String PATTERN_TIME = "HH:mm";
     public static final String PATTERN_DATE = "dd.MM";
     public static final String PATTERN_WEEK_DAY = "EE";
+    public static final String PATTERN_WEEK_DAY_TIME = "EE HH:mm";
 
     public static String toString(Date date, String pattern) {
         return toString(date, pattern, false);

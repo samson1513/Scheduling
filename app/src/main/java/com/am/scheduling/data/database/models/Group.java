@@ -1,6 +1,7 @@
 package com.am.scheduling.data.database.models;
 
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 /**
@@ -12,31 +13,16 @@ import android.arch.persistence.room.PrimaryKey;
 public class Group {
 
     @PrimaryKey(autoGenerate = true)
-    private int id;
-    private String name;
-    private int size;
+    public int id;
+    public String name;
+    public int size;
 
-    public int getId() {
-        return id;
+    public Group() {
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    @Ignore
+    public Group(String name, int size) {
         this.name = name;
-    }
-
-    public int getSize() {
-        return size;
-    }
-
-    public void setSize(int size) {
         this.size = size;
     }
 }

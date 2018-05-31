@@ -2,6 +2,7 @@ package com.am.scheduling.data.database.models;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 import java.util.Date;
@@ -11,47 +12,22 @@ import java.util.Date;
  * on 03.03.2018.
  */
 
-@Entity
+@Entity(tableName = "timeslots")
 public class Timeslot {
 
     @PrimaryKey(autoGenerate = true)
-    private int id;
-    @ColumnInfo(name = "schedule_id")
-    private String scheduleId;
+    public int id;
     @ColumnInfo(name = "start_time")
-    private Date startTime;
+    public Date startTime;
     @ColumnInfo(name = "end_time")
-    private Date endTime;
+    public Date endTime;
 
-    public int getId() {
-        return id;
+    public Timeslot() {
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getScheduleId() {
-        return scheduleId;
-    }
-
-    public void setScheduleId(String scheduleId) {
-        this.scheduleId = scheduleId;
-    }
-
-    public Date getStartTime() {
-        return startTime;
-    }
-
-    public void setStartTime(Date startTime) {
+    @Ignore
+    public Timeslot(Date startTime, Date endTime) {
         this.startTime = startTime;
-    }
-
-    public Date getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
 }
