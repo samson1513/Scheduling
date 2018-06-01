@@ -1,9 +1,12 @@
 package com.am.scheduling.chapter5;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * A simple class abstraction -- basically a container for class, group, module, professor, timeslot, and room IDs
  */
-public class Class {
+public class Class implements Parcelable {
     private final int classId;
     private final int groupId;
     private final int moduleId;
@@ -104,5 +107,41 @@ public class Class {
     public int getRoomId(){
         return this.roomId;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.classId);
+        dest.writeInt(this.groupId);
+        dest.writeInt(this.moduleId);
+        dest.writeInt(this.professorId);
+        dest.writeInt(this.timeslotId);
+        dest.writeInt(this.roomId);
+    }
+
+    protected Class(Parcel in) {
+        this.classId = in.readInt();
+        this.groupId = in.readInt();
+        this.moduleId = in.readInt();
+        this.professorId = in.readInt();
+        this.timeslotId = in.readInt();
+        this.roomId = in.readInt();
+    }
+
+    public static final Parcelable.Creator<Class> CREATOR = new Parcelable.Creator<Class>() {
+        @Override
+        public Class createFromParcel(Parcel source) {
+            return new Class(source);
+        }
+
+        @Override
+        public Class[] newArray(int size) {
+            return new Class[size];
+        }
+    };
 }
 

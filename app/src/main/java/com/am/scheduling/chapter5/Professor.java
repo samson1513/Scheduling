@@ -1,8 +1,11 @@
 package com.am.scheduling.chapter5;
+
+import java.io.Serializable;
+
 /**
  * Simple Professor abstraction.
  */
-public class Professor {
+public class Professor implements Serializable {
     private final int professorId;
     private final String professorName;
 

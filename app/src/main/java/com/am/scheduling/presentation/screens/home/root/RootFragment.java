@@ -5,7 +5,8 @@ import android.widget.Button;
 
 import com.am.scheduling.R;
 import com.am.scheduling.presentation.abc.core.base.BaseFragment;
-import com.am.scheduling.presentation.screens.home.root.management.ManagementFragment;
+import com.am.scheduling.presentation.screens.home.management.ManagementFragment;
+import com.am.scheduling.presentation.screens.home.schedule.grouppicker.GroupPickerFragment;
 import com.am.scheduling.presentation.utils.ui.RxView;
 
 import butterknife.BindView;
@@ -45,7 +46,7 @@ public class RootFragment extends BaseFragment<RootContract.Presenter> implement
 
     @Override
     public void startGeneratorScreen() {
-
+        getNavigator().switchFragment(GroupPickerFragment.newInstance());
     }
 }
 

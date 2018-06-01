@@ -1,7 +1,6 @@
 package com.am.scheduling.presentation.abc.core.list.pager;
 
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,7 +42,6 @@ public abstract class ListPagerAdapter<DH extends PagerDH> extends PagerAdapter 
         return items;
     }
 
-    @Nullable
     public DH getItem(int position) {
         if (position < 0 || position >= items.size())
             return null;
@@ -69,6 +67,9 @@ public abstract class ListPagerAdapter<DH extends PagerDH> extends PagerAdapter 
         PagerVH vh = createViewHolder(container, viewType);
         vh.position = position;
         vh.viewType = viewType;
+        if (vh instanceof ClickableVH && onItemClickListener != null) {
+            ((ClickableVH)vh).setOnItemClickListener(onItemClickListener);
+        }
         vh.bindData(dh);
         container.addView(vh.itemView);
         return vh;

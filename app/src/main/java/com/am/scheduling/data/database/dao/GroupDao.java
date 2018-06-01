@@ -33,4 +33,8 @@ public interface GroupDao {
 
     @Query("SELECT * FROM groups")
     List<Group> get();
+
+    @Query("SELECT * FROM groups " +
+            "WHERE id = :id")
+    Group get(int id);
 }

@@ -96,8 +96,7 @@ public class TimetableGA {
      * Creates a Timetable with all the necessary course information.
      * 
      * Normally you'd get this info from a database.
-     * 
-     * @return
+     *
      */
 	private static Timetable initializeTimetable() {
 		// Create timetable
@@ -133,12 +132,12 @@ public class TimetableGA {
 		timetable.addProfessor(4, "Mr A Thompson");
 
 		// Set up modules and define the professors that teach them
-		timetable.addModule(1, "cs1", "Computer Science", new int[] { 1, 2 });
-		timetable.addModule(2, "en1", "English", new int[] { 1, 3 });
-		timetable.addModule(3, "ma1", "Maths", new int[] { 1, 2 });
-		timetable.addModule(4, "ph1", "Physics", new int[] { 3, 4 });
-		timetable.addModule(5, "hi1", "History", new int[] { 4 });
-		timetable.addModule(6, "dr1", "Drama", new int[] { 1, 4 });
+		timetable.addModule(1, "Computer Science", new int[] { 1, 2 });
+		timetable.addModule(2, "English", new int[] { 1, 3 });
+		timetable.addModule(3, "Maths", new int[] { 1, 2 });
+		timetable.addModule(4, "Physics", new int[] { 3, 4 });
+		timetable.addModule(5, "History", new int[] { 4 });
+		timetable.addModule(6, "Drama", new int[] { 1, 4 });
 
 		// Set up student groups and the modules they take.
 		timetable.addGroup(1, 10, new int[] { 1, 1, 1, 3, 4 });

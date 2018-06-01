@@ -4,11 +4,13 @@ import android.support.annotation.CheckResult;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.SearchView;
 import android.view.View;
+import android.widget.EditText;
 
 import java.util.concurrent.TimeUnit;
 
+import javax.annotation.Nonnull;
+
 import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 
 /**
  * Created by Alex Michenko
@@ -39,10 +41,8 @@ public class RxView {
     }
 
     @CheckResult
-    @NonNull
-    public static Observable<String> queryTextChangedDebounce(@NonNull SearchView searchView, long timeout, TimeUnit unit) {
-        return queryTextChanged(searchView)
-                .debounce(timeout, unit)
-                .observeOn(AndroidSchedulers.mainThread());
+    @Nonnull
+    public static Observable<String> textChanged(@Nonnull EditText editText) {
+        return new TextChangeObservable(editText);
     }
 }

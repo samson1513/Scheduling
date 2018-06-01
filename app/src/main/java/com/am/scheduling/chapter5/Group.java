@@ -1,10 +1,12 @@
 package com.am.scheduling.chapter5;
 
+import java.io.Serializable;
+
 /**
  * A simple "group-of-students" abstraction. Defines the modules that the group is enrolled in.
  *
  */
-public class Group {
+public class Group implements Serializable {
     private final int groupId;
     private final int groupSize;
     private final int moduleIds[];

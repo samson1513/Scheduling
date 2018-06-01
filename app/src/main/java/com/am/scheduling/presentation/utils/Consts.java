@@ -18,6 +18,8 @@ public final class Consts {
     public final static String KEY_RESOURCE_ID = "resource_ID";
     public final static String KEY_TITLE = "title";
     public static final String KEY_CODE = "code";
+    public static final String KEY_LIST = "list";
+    public static final String KEY_RESULT = "result";
 
 
     //Request codes

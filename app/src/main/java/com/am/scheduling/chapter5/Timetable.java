@@ -1,5 +1,8 @@
 package com.am.scheduling.chapter5;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.HashMap;
 
 /**
@@ -24,7 +27,7 @@ import java.util.HashMap;
  * violated.
  * 
  */
-public class Timetable {
+public class Timetable implements Parcelable {
 	private final HashMap<Integer, Room> rooms;
 	private final HashMap<Integer, Professor> professors;
 	private final HashMap<Integer, Module> modules;
@@ -38,11 +41,11 @@ public class Timetable {
 	 * Initialize new Timetable
 	 */
 	public Timetable() {
-		this.rooms = new HashMap<Integer, Room>();
-		this.professors = new HashMap<Integer, Professor>();
-		this.modules = new HashMap<Integer, Module>();
-		this.groups = new HashMap<Integer, Group>();
-		this.timeslots = new HashMap<Integer, Timeslot>();
+		this.rooms = new HashMap<>();
+		this.professors = new HashMap<>();
+		this.modules = new HashMap<>();
+		this.groups = new HashMap<>();
+		this.timeslots = new HashMap<>();
 	}
 
 	/**
@@ -81,57 +84,23 @@ public class Timetable {
 		return this.professors;
 	}
 
-	/**
-	 * Add new room
-	 * 
-	 * @param roomId
-	 * @param roomName
-	 * @param capacity
-	 */
 	public void addRoom(int roomId, String roomName, int capacity) {
 		this.rooms.put(roomId, new Room(roomId, roomName, capacity));
 	}
 
-	/**
-	 * Add new professor
-	 * 
-	 * @param professorId
-	 * @param professorName
-	 */
 	public void addProfessor(int professorId, String professorName) {
 		this.professors.put(professorId, new Professor(professorId, professorName));
 	}
 
-	/**
-	 * Add new module
-	 * 
-	 * @param moduleId
-	 * @param moduleCode
-	 * @param module
-	 * @param professorIds
-	 */
-	public void addModule(int moduleId, String moduleCode, String module, int professorIds[]) {
-		this.modules.put(moduleId, new Module(moduleId, moduleCode, module, professorIds));
+	public void addModule(int moduleId, String module, int professorIds[]) {
+		this.modules.put(moduleId, new Module(moduleId, module, professorIds));
 	}
 
-	/**
-	 * Add new group
-	 * 
-	 * @param groupId
-	 * @param groupSize
-	 * @param moduleIds
-	 */
 	public void addGroup(int groupId, int groupSize, int moduleIds[]) {
 		this.groups.put(groupId, new Group(groupId, groupSize, moduleIds));
 		this.numClasses = 0;
 	}
 
-	/**
-	 * Add new timeslot
-	 * 
-	 * @param timeslotId
-	 * @param timeslot
-	 */
 	public void addTimeslot(int timeslotId, String timeslot) {
 		this.timeslots.put(timeslotId, new Timeslot(timeslotId, timeslot));
 	}
@@ -183,92 +152,48 @@ public class Timetable {
 		this.classes = classes;
 	}
 
-	/**
-	 * Get room from roomId
-	 * 
-	 * @param roomId
-	 * @return room
-	 */
 	public Room getRoom(int roomId) {
 		if (!this.rooms.containsKey(roomId)) {
 			System.out.println("Rooms doesn't contain key " + roomId);
 		}
-		return (Room) this.rooms.get(roomId);
+		return this.rooms.get(roomId);
 	}
 
 	public HashMap<Integer, Room> getRooms() {
 		return this.rooms;
 	}
 
-	/**
-	 * Get random room
-	 * 
-	 * @return room
-	 */
 	public Room getRandomRoom() {
 		Object[] roomsArray = this.rooms.values().toArray();
-		Room room = (Room) roomsArray[(int) (roomsArray.length * Math.random())];
-		return room;
+		return (Room) roomsArray[(int) (roomsArray.length * Math.random())];
 	}
 
-	/**
-	 * Get professor from professorId
-	 * 
-	 * @param professorId
-	 * @return professor
-	 */
 	public Professor getProfessor(int professorId) {
-		return (Professor) this.professors.get(professorId);
+		return this.professors.get(professorId);
 	}
 
-	/**
-	 * Get module from moduleId
-	 * 
-	 * @param moduleId
-	 * @return module
-	 */
 	public Module getModule(int moduleId) {
-		return (Module) this.modules.get(moduleId);
+		return this.modules.get(moduleId);
 	}
 
-	/**
-	 * Get moduleIds of student group
-	 * 
-	 * @param groupId
-	 * @return moduleId array
-	 */
 	public int[] getGroupModules(int groupId) {
-		Group group = (Group) this.groups.get(groupId);
+		Group group = this.groups.get(groupId);
 		return group.getModuleIds();
 	}
 
-	/**
-	 * Get group from groupId
-	 * 
-	 * @param groupId
-	 * @return group
-	 */
 	public Group getGroup(int groupId) {
-		return (Group) this.groups.get(groupId);
+		return  this.groups.get(groupId);
 	}
 
-	/**
-	 * Get all student groups
-	 * 
-	 * @return array of groups
-	 */
 	public Group[] getGroupsAsArray() {
-		return (Group[]) this.groups.values().toArray(new Group[this.groups.size()]);
+		return this.groups.values().toArray(new Group[this.groups.size()]);
+	}
+	public Timeslot[] getTimeslotsAsArray() {
+		return this.timeslots.values().toArray(new Timeslot[this.timeslots.size()]);
 	}
 
-	/**
-	 * Get timeslot by timeslotId
-	 * 
-	 * @param timeslotId
-	 * @return timeslot
-	 */
 	public Timeslot getTimeslot(int timeslotId) {
-		return (Timeslot) this.timeslots.get(timeslotId);
+		return this.timeslots.get(timeslotId);
 	}
 
 	/**
@@ -278,8 +203,7 @@ public class Timetable {
 	 */
 	public Timeslot getRandomTimeslot() {
 		Object[] timeslotArray = this.timeslots.values().toArray();
-		Timeslot timeslot = (Timeslot) timeslotArray[(int) (timeslotArray.length * Math.random())];
-		return timeslot;
+		return (Timeslot) timeslotArray[(int) (timeslotArray.length * Math.random())];
 	}
 
 	/**
@@ -302,7 +226,7 @@ public class Timetable {
 		}
 
 		int numClasses = 0;
-		Group groups[] = (Group[]) this.groups.values().toArray(new Group[this.groups.size()]);
+		Group groups[] = this.groups.values().toArray(new Group[this.groups.size()]);
 		for (Group group : groups) {
 			numClasses += group.getModuleIds().length;
 		}
@@ -362,8 +286,55 @@ public class Timetable {
 					break;
 				}
 			}
+
+			// Check if timeslot is taken for group
+			for (Class classB : this.classes) {
+				if (classA.getGroupId() == classB.getGroupId() && classA.getTimeslotId() == classB.getTimeslotId()
+						&& classA.getClassId() != classB.getClassId()) {
+					clashes++;
+					break;
+				}
+			}
 		}
 
 		return clashes;
 	}
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeSerializable(this.rooms);
+		dest.writeSerializable(this.professors);
+		dest.writeSerializable(this.modules);
+		dest.writeSerializable(this.groups);
+		dest.writeSerializable(this.timeslots);
+		dest.writeTypedArray(this.classes, flags);
+		dest.writeInt(this.numClasses);
+	}
+
+	protected Timetable(Parcel in) {
+		this.rooms = (HashMap<Integer, Room>) in.readSerializable();
+		this.professors = (HashMap<Integer, Professor>) in.readSerializable();
+		this.modules = (HashMap<Integer, Module>) in.readSerializable();
+		this.groups = (HashMap<Integer, Group>) in.readSerializable();
+		this.timeslots = (HashMap<Integer, Timeslot>) in.readSerializable();
+		this.classes = in.createTypedArray(Class.CREATOR);
+		this.numClasses = in.readInt();
+	}
+
+	public static final Creator<Timetable> CREATOR = new Creator<Timetable>() {
+		@Override
+		public Timetable createFromParcel(Parcel source) {
+			return new Timetable(source);
+		}
+
+		@Override
+		public Timetable[] newArray(int size) {
+			return new Timetable[size];
+		}
+	};
 }

@@ -26,6 +26,7 @@
     <string name="hint_capacity">Capacity</string>
     <string name="hint_size">Count members</string>
     <string name="err_msg_no_data">No data</string>
+    <string name="btn_next">Next</string>
 
     <!--Formatted text-->
 

@@ -8,9 +8,11 @@
 
     <!--Background colors-->
     <color name="bg_white">#ffffff</color>
+    <color name="bg_gray_light">#e7e7e7</color>
 
 
     <!--Text colors-->
     <color name="text_black">#545454</color>
+    <color name="text_gray">#b2b2b2</color>
 
 </resources>

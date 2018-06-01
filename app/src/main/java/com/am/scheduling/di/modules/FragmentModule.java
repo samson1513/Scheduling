@@ -1,34 +1,42 @@
 package com.am.scheduling.di.modules;
 
 
+import com.am.scheduling.presentation.screens.home.management.ManagementContract;
+import com.am.scheduling.presentation.screens.home.management.ManagementFragment;
+import com.am.scheduling.presentation.screens.home.management.group.create.CreateGroupContract;
+import com.am.scheduling.presentation.screens.home.management.group.create.CreateGroupFragment;
+import com.am.scheduling.presentation.screens.home.management.group.list.GroupListContract;
+import com.am.scheduling.presentation.screens.home.management.group.list.GroupListFragment;
+import com.am.scheduling.presentation.screens.home.management.room.create.CreateRoomContract;
+import com.am.scheduling.presentation.screens.home.management.room.create.CreateRoomFragment;
+import com.am.scheduling.presentation.screens.home.management.room.list.RoomListContract;
+import com.am.scheduling.presentation.screens.home.management.room.list.RoomListFragment;
+import com.am.scheduling.presentation.screens.home.management.subject.create.CreateSubjectContract;
+import com.am.scheduling.presentation.screens.home.management.subject.create.CreateSubjectFragment;
+import com.am.scheduling.presentation.screens.home.management.subject.list.SubjectListContract;
+import com.am.scheduling.presentation.screens.home.management.subject.list.SubjectListFragment;
+import com.am.scheduling.presentation.screens.home.management.teacher.create.CreateTeacherContract;
+import com.am.scheduling.presentation.screens.home.management.teacher.create.CreateTeacherFragment;
+import com.am.scheduling.presentation.screens.home.management.teacher.list.TeacherListContract;
+import com.am.scheduling.presentation.screens.home.management.teacher.list.TeacherListFragment;
+import com.am.scheduling.presentation.screens.home.management.timeslot.create.CreateTimeslotContract;
+import com.am.scheduling.presentation.screens.home.management.timeslot.create.CreateTimeslotFragment;
+import com.am.scheduling.presentation.screens.home.management.timeslot.list.TimeslotListContract;
+import com.am.scheduling.presentation.screens.home.management.timeslot.list.TimeslotListFragment;
 import com.am.scheduling.presentation.screens.home.root.RootContract;
 import com.am.scheduling.presentation.screens.home.root.RootFragment;
-import com.am.scheduling.presentation.screens.home.root.group.create.CreateGroupContract;
-import com.am.scheduling.presentation.screens.home.root.group.create.CreateGroupFragment;
-import com.am.scheduling.presentation.screens.home.root.group.list.GroupListContract;
-import com.am.scheduling.presentation.screens.home.root.group.list.GroupListFragment;
-import com.am.scheduling.presentation.screens.home.root.management.ManagementContract;
-import com.am.scheduling.presentation.screens.home.root.management.ManagementFragment;
-import com.am.scheduling.presentation.screens.home.root.room.create.CreateRoomContract;
-import com.am.scheduling.presentation.screens.home.root.room.create.CreateRoomFragment;
-import com.am.scheduling.presentation.screens.home.root.room.list.RoomListContract;
-import com.am.scheduling.presentation.screens.home.root.room.list.RoomListFragment;
-import com.am.scheduling.presentation.screens.home.root.subject.create.CreateSubjectContract;
-import com.am.scheduling.presentation.screens.home.root.subject.create.CreateSubjectFragment;
-import com.am.scheduling.presentation.screens.home.root.subject.list.SubjectListContract;
-import com.am.scheduling.presentation.screens.home.root.subject.list.SubjectListFragment;
-import com.am.scheduling.presentation.screens.home.root.teacher.create.CreateTeacherContract;
-import com.am.scheduling.presentation.screens.home.root.teacher.create.CreateTeacherFragment;
-import com.am.scheduling.presentation.screens.home.root.teacher.list.TeacherListContract;
-import com.am.scheduling.presentation.screens.home.root.teacher.list.TeacherListFragment;
-import com.am.scheduling.presentation.screens.home.root.timeslot.create.CreateTimeslotContract;
-import com.am.scheduling.presentation.screens.home.root.timeslot.create.CreateTimeslotFragment;
-import com.am.scheduling.presentation.screens.home.root.timeslot.list.TimeslotListContract;
-import com.am.scheduling.presentation.screens.home.root.timeslot.list.TimeslotListFragment;
-import com.am.scheduling.presentation.screens.main.creator.CreatorFragment;
-import com.am.scheduling.presentation.screens.main.creator.CreatorModule;
-import com.am.scheduling.presentation.screens.main.groupmodules.GroupModulesContract;
-import com.am.scheduling.presentation.screens.main.groupmodules.GroupModulesFragment;
+import com.am.scheduling.presentation.screens.home.schedule.generator.GeneratorContract;
+import com.am.scheduling.presentation.screens.home.schedule.generator.GeneratorFragment;
+import com.am.scheduling.presentation.screens.home.schedule.grouppicker.GroupPickerContract;
+import com.am.scheduling.presentation.screens.home.schedule.grouppicker.GroupPickerFragment;
+import com.am.scheduling.presentation.screens.home.schedule.modules.ModulesContract;
+import com.am.scheduling.presentation.screens.home.schedule.modules.ModulesFragment;
+import com.am.scheduling.presentation.screens.home.schedule.modules.picker.subject.SubjectPickerContract;
+import com.am.scheduling.presentation.screens.home.schedule.modules.picker.subject.SubjectPickerDialog;
+import com.am.scheduling.presentation.screens.home.schedule.modules.picker.teacher.TeacherPickerContract;
+import com.am.scheduling.presentation.screens.home.schedule.modules.picker.teacher.TeacherPickerDialog;
+import com.am.scheduling.presentation.screens.home.schedule.timeslotpicker.TimeslotPickerContract;
+import com.am.scheduling.presentation.screens.home.schedule.timeslotpicker.TimeslotPickerFragment;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -40,9 +48,6 @@ import dagger.android.ContributesAndroidInjector;
 
 @Module
 public abstract class FragmentModule {
-
-    @ContributesAndroidInjector(modules = {CreatorModule.class})
-    abstract CreatorFragment creatorFragment();
 
     @ContributesAndroidInjector(modules = {RootContract.RootModule.class})
     abstract RootFragment rootFragment();
@@ -80,6 +85,21 @@ public abstract class FragmentModule {
     @ContributesAndroidInjector(modules = {CreateTimeslotContract.CreateTimeslotModule.class})
     abstract CreateTimeslotFragment createTimeslotFragment();
 
-    @ContributesAndroidInjector(modules = {GroupModulesContract.GroupModulesModule.class})
-    abstract GroupModulesFragment groupmodulesFragment();
+    @ContributesAndroidInjector(modules = {GroupPickerContract.GroupPickerModule.class})
+    abstract GroupPickerFragment groupPickerFragment();
+
+    @ContributesAndroidInjector(modules = {SubjectPickerContract.SubjectPickerModule.class})
+    abstract SubjectPickerDialog subjectPickerDialog();
+
+    @ContributesAndroidInjector(modules = {TeacherPickerContract.TeacherPickerModule.class})
+    abstract TeacherPickerDialog teacherPickerDialog();
+
+    @ContributesAndroidInjector(modules = {ModulesContract.ModulesModule.class})
+    abstract ModulesFragment modulesFragment();
+
+    @ContributesAndroidInjector(modules = {TimeslotPickerContract.TimeslotPickerModule.class})
+    abstract TimeslotPickerFragment timeslotpickerFragment();
+
+    @ContributesAndroidInjector(modules = {GeneratorContract.GeneratorModule.class})
+    abstract GeneratorFragment generatorFragment();
 }
