@@ -1,5 +1,6 @@
 package com.am.scheduling.presentation.screens.splash;
 
+import com.am.scheduling.domain.usecases.app.AppCase;
 import com.am.scheduling.presentation.abc.core.base.BasePresenter;
 import com.am.scheduling.presentation.abc.core.base.BaseView;
 
@@ -19,6 +20,9 @@ public interface SplashContract {
     }
 
     class Model {
+
+        @Inject
+        AppCase appCase;
 
         @Inject
         public Model() {

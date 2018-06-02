@@ -33,4 +33,7 @@ public interface RoomDao {
 
     @Query("SELECT * FROM rooms")
     List<Room> get();
+
+    @Query("SELECT COUNT(*) FROM rooms")
+    int count();
 }

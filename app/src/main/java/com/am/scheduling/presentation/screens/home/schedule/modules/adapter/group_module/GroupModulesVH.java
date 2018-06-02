@@ -46,7 +46,6 @@ public class GroupModulesVH extends PagerVH<GroupModulesDH> implements Clickable
         adapter = new ModuleAdapter();
         mRvModulesFgm.setAdapter(adapter);
         mRvModulesFgm.setLayoutManager(new LinearLayoutManager(itemView.getContext()));
-
     }
 
     @Override
@@ -67,6 +66,10 @@ public class GroupModulesVH extends PagerVH<GroupModulesDH> implements Clickable
         mEtTeacherFgm.setText(data.getCurrentTeacher());
         mEtCountFgm.setText(String.valueOf(data.getCurrentCount()));
         adapter.setNewData(data.moduleDHS);
+        adapter.setOnItemClickListener((adapter1, view, position1) -> {
+            adapter.remove(position1);
+            data.moduleDHS.remove(position1);
+        });
 
         if (data.error) {
             if (data.currentModule.subject == null)

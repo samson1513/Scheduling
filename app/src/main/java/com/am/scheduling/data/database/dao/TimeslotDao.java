@@ -33,4 +33,7 @@ public interface TimeslotDao {
 
     @Query("SELECT * FROM timeslots")
     List<Timeslot> get();
+
+    @Query("SELECT COUNT(*) FROM timeslots")
+    int count();
 }

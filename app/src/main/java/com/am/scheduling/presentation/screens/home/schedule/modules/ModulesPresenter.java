@@ -9,7 +9,10 @@ import com.am.scheduling.presentation.screens.home.schedule.modules.adapter.grou
 import com.am.scheduling.presentation.screens.home.schedule.modules.adapter.module.ModuleDH;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import io.reactivex.Observable;
 
@@ -17,7 +20,7 @@ public class ModulesPresenter extends BasePresenterImpl<ModulesContract.View> im
 
     private ModulesContract.Model model;
     private ArrayList<GroupModulesDH> groupModules;
-    private SparseArray<IntWrap> subjTeachersId;
+    private SparseArray<SetWrap> subjTeachersId;
 
     public ModulesPresenter(ModulesContract.View view, ModulesContract.Model model, ArrayList<Group> groups) {
         super(view);
@@ -30,7 +33,7 @@ public class ModulesPresenter extends BasePresenterImpl<ModulesContract.View> im
         subjTeachersId = new SparseArray<>();
         addDisposable(model.subjectListCase.async()
                 .flatMapObservable(Observable::fromIterable)
-                .subscribe(subject -> subjTeachersId.put(subject.id, new IntWrap())));
+                .subscribe(subject -> subjTeachersId.put(subject.id, new SetWrap())));
     }
 
     @Override
@@ -91,6 +94,29 @@ public class ModulesPresenter extends BasePresenterImpl<ModulesContract.View> im
             int[] res = new int[ids.size()];
             for (int i = 0; i < ids.size(); i++) {
                 res[i] = ids.get(i);
+            }
+            return res;
+        }
+
+        public void add(int value) {
+            ids.add(value);
+        }
+    }
+
+    class SetWrap {
+        Set<Integer> ids;
+
+        SetWrap() {
+            ids = new HashSet<>();
+        }
+
+        public int[] get() {
+            int[] res = new int[ids.size()];
+            Iterator<Integer> iterator = ids.iterator();
+            int i = 0;
+            while (iterator.hasNext()) {
+                res[i] = iterator.next();
+                ++i;
             }
             return res;
         }

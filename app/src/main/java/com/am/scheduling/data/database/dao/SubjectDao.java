@@ -33,4 +33,7 @@ public interface SubjectDao {
 
     @Query("SELECT * FROM subjects")
     List<Subject> get();
+
+    @Query("SELECT COUNT(*) FROM subjects")
+    int count();
 }

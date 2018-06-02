@@ -1,6 +1,8 @@
 package com.am.scheduling.di.modules;
 
 
+import com.am.scheduling.domain.repositories.app.AppRepo;
+import com.am.scheduling.domain.repositories.app.AppRepoImpl;
 import com.am.scheduling.domain.repositories.ga.GenRepo;
 import com.am.scheduling.domain.repositories.ga.GenRepoImpl;
 import com.am.scheduling.domain.repositories.group.GroupRepo;
@@ -42,4 +44,7 @@ public abstract class RepositoryModule {
 
     @Binds
     abstract GenRepo genRepo(GenRepoImpl genRepoImpl);
+
+    @Binds
+    abstract AppRepo appRepo(AppRepoImpl appRepo);
 }

@@ -42,6 +42,8 @@ public class GroupPickerPresenter extends ListPresenterImpl<GroupPickerContract.
     public void next() {
         if (!checkedGroups.isEmpty()) {
             getView().startModulesScreen(checkedGroups);
+        } else {
+            getView().showMessage("Select groups");
         }
     }
 
@@ -51,7 +53,7 @@ public class GroupPickerPresenter extends ListPresenterImpl<GroupPickerContract.
         if (checked) {
             checkedGroups.add(dh.group);
         } else {
-            checkedGroups.remove(dh.group);
+            checkedGroups.remove(getIndex(dh.group));
         }
         dh.checked = checked;
         getView().updateItem(dh, position);

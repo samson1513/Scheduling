@@ -33,4 +33,7 @@ public interface TeacherDao {
 
     @Query("SELECT * FROM teachers")
     List<Teacher> get();
+
+    @Query("SELECT COUNT(*) FROM teachers")
+    int count();
 }

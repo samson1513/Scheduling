@@ -20,9 +20,10 @@ public class SplashPresenter extends BasePresenterImpl<SplashContract.View> impl
     @Override
     public void subscribe() {
         addDisposable(Single.timer(2, TimeUnit.SECONDS)
+                .toCompletable()
+                .concatWith(model.appCase.async())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .toCompletable()
                 .subscribe(() -> getView().startMainScreen())
         );
     }

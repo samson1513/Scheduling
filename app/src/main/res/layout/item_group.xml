@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="@dimen/margin_mini">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,6 +17,8 @@
             android:id="@+id/text_name_ig"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_group"
+            android:drawablePadding="@dimen/padding_default"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 
         <Space
@@ -31,4 +32,4 @@
             android:layout_height="wrap_content"/>
 
     </LinearLayout>
-</android.support.v7.widget.CardView>
+</FrameLayout>

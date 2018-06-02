@@ -53,6 +53,8 @@ public class TimeslotPickerPresenter extends ListPresenterImpl<TimeslotPickerCon
     public void next() {
         if (!checkedSlots.isEmpty()) {
             getView().startGeneratorScreen(prepareTimetable());
+        } else {
+            getView().showMessage("Select time intervals");
         }
     }
 

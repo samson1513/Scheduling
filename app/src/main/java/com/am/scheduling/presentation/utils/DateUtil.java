@@ -16,7 +16,7 @@ public final class DateUtil {
 
     private DateUtil() {
     }
-    public static final String PATTERN_SERVER_DATE = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+    public static final String PATTERN_SERVER_DATE = "yyyy-MM-dd HH:mm";
     public static final String PATTERN_TIMESTAMP = "yyyy_MM_dd_HH_mm_ss";
     public static final String PATTERN_TIME = "HH:mm";
     public static final String PATTERN_DATE = "dd.MM";

@@ -37,4 +37,7 @@ public interface GroupDao {
     @Query("SELECT * FROM groups " +
             "WHERE id = :id")
     Group get(int id);
+
+    @Query("SELECT COUNT(*) FROM groups")
+    int count();
 }
